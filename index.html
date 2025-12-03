@@ -1,73 +1,527 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <title>SellMate – Dein KI-Verkaufsberater</title>
+  <meta charset="UTF-8" />
+  <title>SellMate – Dein KI-Verkaufsberater für Online-Shops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #4338ca;
+      --bg: #f5f5fb;
+      --text: #111827;
+      --muted: #6b7280;
+      --card-bg: #ffffff;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f7f7f9;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top left, #eef2ff, #f9fafb);
+      color: var(--text);
     }
-    header {
-      background: #4f46e5;
-      color: white;
-      padding: 30px;
-      text-align: center;
-    }
-    h1 {
-      margin: 0;
-      font-size: 34px;
-    }
-    section {
-      padding: 30px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .cta {
-      background: #4f46e5;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 12px;
+
+    a {
+      color: inherit;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
     }
-    footer {
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      background: rgba(248, 250, 252, 0.85);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 4px 8px;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(129, 140, 248, 0.1);
+      color: var(--primary-dark);
+    }
+
+    .nav-cta {
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 40px 16px 32px;
       text-align: center;
-      padding: 30px;
-      color: #888;
+      background: linear-gradient(180deg, #4f46e5, #4f46e5 45%, transparent 45%);
+      color: white;
+    }
+
+    .hero-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.25);
+      font-size: 11px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 40px);
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 15px;
+      max-width: 620px;
+      margin-inline: auto;
+      color: #e5e7eb;
+    }
+
+    .hero-cta-row {
+      margin-top: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #f9fafb;
+      color: #111827;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-ghost {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(209, 213, 219, 0.8);
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 0.3);
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1040px;
+      margin: -24px auto 40px;
+      padding: 0 16px 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 18px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 22px;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    ul {
+      padding-left: 18px;
+      margin: 8px 0 0;
+    }
+
+    li {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    /* INLINE DEMO CODE */
+    .code-block {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 12px;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4338ca;
+    }
+
+    /* PRICING */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(255, 255, 255, 0.95);
+      padding: 16px 18px 14px;
+    }
+
+    .pricing-price {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 4px 0 4px;
+    }
+
+    .pricing-price span {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0891b2;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid rgba(209, 213, 219, 0.7);
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #9ca3af;
+      background: #f9fafb;
+    }
+
+    footer a {
+      color: #6d28d9;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-inner {
+        justify-content: space-between;
+      }
+      .nav-links {
+        display: none;
+      }
+      main {
+        margin-top: -18px;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>SellMate – Der KI-Verkaufsberater für Online-Shops</h1>
-  <p>Steigere Conversions, reduziere Warenkorbabbrüche und berate deine Kunden 24/7.</p>
-</header>
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="logo">
+        <div class="logo-badge">S</div>
+        <span>SellMate</span>
+      </div>
+      <div class="nav-links">
+        <a href="#what">Produkt</a>
+        <a href="#how">So funktioniert's</a>
+        <a href="#pricing">Preise</a>
+      </div>
+      <a class="nav-cta" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Demo">
+        Demo anfragen
+      </a>
+    </div>
+  </nav>
 
-<section>
-  <h2>Was ist SellMate?</h2>
-  <p>
-    SellMate ist ein KI-gestützter Verkaufsberater, der auf deiner Produktseite erscheint 
-    und Kunden echte Hilfe bietet: Größenberatung, Materialinfos, Styling-Tipps und
-    Antworten auf alle wichtigen Fragen – genau dann, wenn ein Kunde kurz davor ist
-    abzuspringen.
-  </p>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span>✨ KI-Verkaufsberater für deine Produktseiten</span>
+      </div>
+      <h1>SellMate – Der KI-Verkaufsberater für Online-Shops</h1>
+      <p>
+        SellMate erkennt kaufbereite Besucher, spricht sie direkt auf der Produktseite an
+        und beantwortet live Fragen zu Größe, Material und Style – damit mehr Warenkörbe
+        bei dir und nicht im Nichts landen.
+      </p>
+      <div class="hero-cta-row">
+        <a class="btn-primary" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Testzugang">
+          Testzugang anfragen
+        </a>
+        <a class="btn-ghost" href="#how">Wie funktioniert das?</a>
+      </div>
+    </div>
+  </header>
 
-  <h2>So installierst du SellMate</h2>
-  <p>Kopiere diesen Code in den <code>&lt;head&gt;</code>-Bereich deiner Website:</p>
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="grid" id="what">
+      <!-- LEFT: What is SellMate -->
+      <section class="card">
+        <div class="section-label">Was ist SellMate?</div>
+        <h2>Dein smarter Verkaufsberater direkt auf der Produktseite</h2>
+        <p>
+          SellMate ist ein KI-gestützter Verkaufsberater, der auf deiner Produktseite
+          erscheint, sobald ein Besucher länger zögert oder ein Produkt mehrfach ansieht.
+          Selly – der Bot hinter SellMate – hilft bei Größenfragen, Material, Passform
+          und Styling und führt den Kunden sanft in Richtung Kaufentscheidung.
+        </p>
 
-  <pre><code>&lt;script src="https://DEINE-URL-AKTUELLER-ORT/widget.js" async&gt;&lt;/script&gt;</code></pre>
+        <h3>Geeignet für Shops, die…</h3>
+        <ul>
+          <li>Mode, Streetwear, Schuhe oder Accessoires verkaufen</li>
+          <li>viele Warenkorbabbrüche auf Produktseiten haben</li>
+          <li>keinen 24/7 Live-Chat anbieten können oder wollen</li>
+          <li>trotzdem persönliche Beratung anbieten möchten</li>
+        </ul>
 
-  <a class="cta" href="mailto:DEINE-MAIL">Kontaktiere mich für eine Testversion</a>
-</section>
+        <div class="pill-list">
+          <span class="pill">Größenberatung</span>
+          <span class="pill">Material & Qualität</span>
+          <span class="pill">Style-Empfehlungen</span>
+          <span class="pill">Soft-Selling statt Druck</span>
+        </div>
+      </section>
 
-<footer>
-  © 2025 SellMate. All Rights Reserved.
-</footer>
+      <!-- RIGHT: How to install -->
+      <section class="card" id="install">
+        <div class="section-label">Integration</div>
+        <h2>Installation in unter 2 Minuten</h2>
+        <p>
+          Du bekommst ein kleines Script-Snippet, das du in den
+          <code>&lt;head&gt;</code>-Bereich deines Shops einfügst – ähnlich wie bei
+          Analytics- oder Chat-Tools.
+        </p>
 
+        <p style="margin-top: 8px; font-weight: 500;">
+          Beispiel-Snippet:
+        </p>
+        <div class="code-block">
+&lt;script src="https://DEINE-WIDGET-URL/selly.js"
+        data-sellmate-key="DEIN_API_KEY"
+        async&gt;&lt;/script&gt;
+        </div>
+
+        <p style="margin-top: 10px;">
+          Das war's – dein Shop zeigt ab jetzt automatisch Selly auf den Produktseiten.
+          Auf Wunsch helfe ich dir persönlich bei der Einrichtung.
+        </p>
+      </section>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <section class="card" id="how">
+      <div class="section-label">Ablauf</div>
+      <h2>So funktioniert SellMate in deinem Shop</h2>
+      <div class="grid" style="margin-bottom: 0;">
+        <div>
+          <h3>1. Besucher ans Produkt gebunden</h3>
+          <p>
+            Ein Kunde öffnet eine Produktseite und schaut sich länger als ein paar
+            Sekunden das Produkt an – oder kehrt zum zweiten Mal zurück. SellMate
+            erkennt das Interesse und blendet dezent ein „Hast du Fragen zu diesem
+            Produkt?“-Popup ein.
+          </p>
+
+          <h3>2. Selly beantwortet Fragen in Echtzeit</h3>
+          <p>
+            Über das Chat-Widget kann der Kunde Fragen stellen: „Fällt das eher groß
+            aus?“, „Kratzt der Stoff?“, „Passt das zu einer schwarzen Jeans?“. Selly
+            beantwortet diese auf Basis deiner Produktdaten und eines trainierten
+            KI-Modells – freundlich und ohne Druck.
+          </p>
+        </div>
+        <div>
+          <h3>3. Mehr Vertrauen, weniger Abbrüche</h3>
+          <p>
+            Statt unsicher zu schließen, bekommt der Kunde direkt die Sicherheit, die
+            er braucht, um sich für den Kauf zu entscheiden. SellMate ersetzt keinen
+            Menschen – aber er fängt die Momente ab, in denen sonst niemand ansprechbar
+            ist.
+          </p>
+
+          <h3>4. Analyse & Optimierung (optional)</h3>
+          <p>
+            In der erweiterten Version kannst du sehen, welche Fragen am häufigsten
+            gestellt werden und welche Produkte besonders viele Rückfragen auslösen –
+            perfekt, um Produkttexte und Sortimente zu optimieren.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="card" id="pricing">
+      <div class="section-label">Preise</div>
+      <h2>Starte günstig – skaliere bei Bedarf</h2>
+      <p>
+        Zum Start ist SellMate bewusst einfach gehalten: eine Version, ein Preis.
+        Komplexere Pläne mit mehr Volume, Branding und Integrationen sind bereits in
+        Planung.
+      </p>
+
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="tag">Empfohlen für Einsteiger-Shops</div>
+          <h3>Starter</h3>
+          <div class="pricing-price">
+            19 € <span>/ Monat (netto)</span>
+          </div>
+          <ul>
+            <li>KI-Verkaufsberater „Selly“ auf deinen Produktseiten</li>
+            <li>Basic-Widget-Design (Farbe anpassbar)</li>
+            <li>E-Mail-Onboarding & persönliche Hilfe bei der Einrichtung</li>
+            <li>Ideal zum Testen in einem ersten Shop</li>
+          </ul>
+        </div>
+
+        <div class="pricing-card">
+          <div class="tag">Auf Anfrage</div>
+          <h3>Pro / Agency</h3>
+          <p>
+            Für größere Shops, Agenturen oder mehrere Mandanten-Shops. White-Label,
+            individuelle Limits & Integrationen sind möglich.
+          </p>
+          <p style="margin-top: 6px;">
+            ➝ Schreib mir kurz, was du vorhast – ich melde mich mit einem passenden Angebot.
+          </p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;">
+        <a class="btn-primary" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Testzugang">
+          Jetzt unverbindlich Testzugang anfragen
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 SellMate. All Rights Reserved.
+    · Kontakt: <a href="mailto:DEINE-MAIL-ADRESSE">DEINE-MAIL-ADRESSE</a>
+  </footer>
 </body>
 </html>
