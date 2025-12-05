@@ -408,29 +408,48 @@
 
       <!-- RIGHT: How to install -->
       <section class="card" id="install">
-        <div class="section-label">Integration</div>
-        <h2>Installation in unter 2 Minuten</h2>
-        <p>
-          Du bekommst ein kleines Script-Snippet, das du in den
-          <code>&lt;head&gt;</code>-Bereich deines Shops einfügst – ähnlich wie bei
-          Analytics- oder Chat-Tools.
-        </p>
+  <div class="section-label">Integration</div>
+  <h2>Installation in unter 2 Minuten</h2>
+  <p>
+    Du bekommst ein kleines Snippet, das du in die Produktseite deines Shops einfügst —
+    ähnlich wie bei Analytics- oder Chat-Tools. Die Produktdaten werden über
+    <code>data-product-*</code> Attribute übergeben.
+  </p>
 
-        <p style="margin-top: 8px; font-weight: 500;">
-          Beispiel-Snippet:
-        </p>
-        <div class="code-block">
-&lt;script src="https://DEINE-WIDGET-URL/selly.js"
-        data-sellmate-key="DEIN_API_KEY"
-        async&gt;&lt;/script&gt;
-        </div>
+  <p style="margin-top: 8px; font-weight: 500;">
+    Snippet für dein Produkt-Template:
+  </p>
 
-        <p style="margin-top: 10px;">
-          Das war's – dein Shop zeigt ab jetzt automatisch Selly auf den Produktseiten.
-          Auf Wunsch helfe ich dir persönlich bei der Einrichtung.
-        </p>
-      </section>
-    </div>
+  <div class="code-block">
+&lt;link
+  rel="stylesheet"
+  href="https://maexemillion.github.io/selly-widget/selly.css"
+/&gt;
+
+&lt;div
+  id="product"
+  data-product-id="12345"
+  data-product-name="Oversized Hoodie"
+  data-product-category="Hoodie"
+  data-product-material="80% Baumwolle, 20% Polyester"
+  data-product-fit="oversized"
+&gt;
+  &lt;!-- Dein Produktlayout (Bild, Titel, Preis etc.) --&gt;
+&lt;/div&gt;
+
+&lt;script
+  src="https://maexemillion.github.io/selly-widget/selly.js"
+  data-sellmate-key="DEIN_API_KEY_HIER"
+  async
+&gt;&lt;/script&gt;
+  </div>
+
+  <p style="margin-top: 10px;">
+    Das war's — Selly erkennt nun zögernde Besucher und bietet Beratung direkt
+    auf der Produktseite an. Den API-Key erhältst du nach Buchung eines Plans.
+  </p>
+</section>
+
 
     <!-- HOW IT WORKS -->
     <section class="card" id="how">
