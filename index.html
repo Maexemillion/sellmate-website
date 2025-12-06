@@ -158,6 +158,7 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+      display: inline-block;
     }
 
     .btn-primary:hover {
@@ -279,6 +280,12 @@
       border: 1px solid rgba(148, 163, 184, 0.4);
       background: rgba(255, 255, 255, 0.95);
       padding: 16px 18px 14px;
+      position: relative;
+    }
+
+    .pricing-card-hot {
+      border-color: #f97316;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.3);
     }
 
     .pricing-price {
@@ -303,6 +310,37 @@
       color: #0891b2;
       font-size: 11px;
       margin-bottom: 4px;
+    }
+
+    .pricing-card ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .pricing-card ul li::before {
+      content: "• ";
+      color: var(--primary);
+      margin-right: 4px;
+    }
+
+    .pricing-btn {
+      margin-top: 8px;
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .pricing-btn:hover {
+      background: var(--primary-dark);
     }
 
     /* FOOTER */
@@ -349,7 +387,7 @@
         <a href="#how">So funktioniert's</a>
         <a href="#pricing">Preise</a>
       </div>
-      <a class="nav-cta" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Demo">
+      <a class="nav-cta" href="mailto:info@sellmate.info?subject=SellMate%20Demo">
         Demo anfragen
       </a>
     </div>
@@ -368,7 +406,7 @@
         bei dir und nicht im Nichts landen.
       </p>
       <div class="hero-cta-row">
-        <a class="btn-primary" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Testzugang">
+        <a class="btn-primary" href="mailto:info@sellmate.info?subject=SellMate%20Testzugang">
           Testzugang anfragen
         </a>
         <a class="btn-ghost" href="#how">Wie funktioniert das?</a>
@@ -408,19 +446,19 @@
 
       <!-- RIGHT: How to install -->
       <section class="card" id="install">
-  <div class="section-label">Integration</div>
-  <h2>Installation in unter 2 Minuten</h2>
-  <p>
-    Du bekommst ein kleines Snippet, das du in die Produktseite deines Shops einfügst —
-    ähnlich wie bei Analytics- oder Chat-Tools. Die Produktdaten werden über
-    <code>data-product-*</code> Attribute übergeben.
-  </p>
+        <div class="section-label">Integration</div>
+        <h2>Installation in unter 2 Minuten</h2>
+        <p>
+          Du bekommst ein kleines Snippet, das du in die Produktseite deines Shops einfügst —
+          ähnlich wie bei Analytics- oder Chat-Tools. Die Produktdaten werden über
+          <code>data-product-*</code> Attribute übergeben.
+        </p>
 
-  <p style="margin-top: 8px; font-weight: 500;">
-    Snippet für dein Produkt-Template:
-  </p>
+        <p style="margin-top: 8px; font-weight: 500;">
+          Snippet für dein Produkt-Template:
+        </p>
 
-  <div class="code-block">
+        <div class="code-block">
 &lt;link
   rel="stylesheet"
   href="https://maexemillion.github.io/selly-widget/selly.css"
@@ -442,14 +480,14 @@
   data-sellmate-key="DEIN_API_KEY_HIER"
   async
 &gt;&lt;/script&gt;
-  </div>
+        </div>
 
-  <p style="margin-top: 10px;">
-    Das war's — Selly erkennt nun zögernde Besucher und bietet Beratung direkt
-    auf der Produktseite an. Den API-Key erhältst du nach Buchung eines Plans.
-  </p>
-</section>
-
+        <p style="margin-top: 10px;">
+          Das war's — Selly erkennt nun zögernde Besucher und bietet Beratung direkt
+          auf der Produktseite an. Den API-Key erhältst du nach Buchung eines Plans.
+        </p>
+      </section>
+    </div>
 
     <!-- HOW IT WORKS -->
     <section class="card" id="how">
@@ -495,43 +533,72 @@
     <!-- PRICING -->
     <section class="card" id="pricing">
       <div class="section-label">Preise</div>
-      <h2>Starte günstig – skaliere bei Bedarf</h2>
+      <h2>Wähle den passenden Plan</h2>
       <p>
-        Zum Start ist SellMate bewusst einfach gehalten: eine Version, ein Preis.
-        Komplexere Pläne mit mehr Volume, Branding und Integrationen sind bereits in
-        Planung.
+        Starte klein, teste SellMate in Ruhe – und skaliere, sobald du merkst, wie viel der Assistent dir bringt.
       </p>
 
       <div class="pricing-grid">
+        <!-- Starter -->
         <div class="pricing-card">
-          <div class="tag">Empfohlen für Einsteiger-Shops</div>
+          <div class="tag">Für erste Shops</div>
           <h3>Starter</h3>
           <div class="pricing-price">
             19 € <span>/ Monat (netto)</span>
           </div>
           <ul>
-            <li>KI-Verkaufsberater „Selly“ auf deinen Produktseiten</li>
-            <li>Basic-Widget-Design (Farbe anpassbar)</li>
-            <li>E-Mail-Onboarding & persönliche Hilfe bei der Einrichtung</li>
-            <li>Ideal zum Testen in einem ersten Shop</li>
+            <li>1 Shop / Domain</li>
+            <li>Bis zu 5.000 Interaktionen / Monat</li>
+            <li>1 API-Key</li>
+            <li>Basic-Analytics im Dashboard</li>
+            <li>E-Mail-Support (Antwort i.d.R. innerhalb von 48h)</li>
           </ul>
+          <button class="pricing-btn" onclick="location.href='mailto:info@sellmate.info?subject=SellMate%20Starter%20buchen'">
+            Starter testen
+          </button>
         </div>
 
+        <!-- Pro -->
+        <div class="pricing-card pricing-card-hot">
+          <div class="tag">Meist gewählt</div>
+          <h3>Pro</h3>
+          <div class="pricing-price">
+            49 € <span>/ Monat (netto)</span>
+          </div>
+          <ul>
+            <li>Bis zu 3 Shops / Domains</li>
+            <li>Bis zu 25.000 Interaktionen / Monat</li>
+            <li>Bis zu 5 API-Keys (z.B. pro Brand oder Sprache)</li>
+            <li>Erweiterte Analytics & Export (z.B. PDF-Report)</li>
+            <li>Priorisierter Support (Antwort i.d.R. innerhalb von 24h)</li>
+          </ul>
+          <button class="pricing-btn" onclick="location.href='mailto:info@sellmate.info?subject=SellMate%20Pro%20Demo'">
+            Pro-Demo buchen
+          </button>
+        </div>
+
+        <!-- Scale -->
         <div class="pricing-card">
-          <div class="tag">Auf Anfrage</div>
-          <h3>Pro / Agency</h3>
-          <p>
-            Für größere Shops, Agenturen oder mehrere Mandanten-Shops. White-Label,
-            individuelle Limits & Integrationen sind möglich.
-          </p>
-          <p style="margin-top: 6px;">
-            ➝ Schreib mir kurz, was du vorhast – ich melde mich mit einem passenden Angebot.
-          </p>
+          <div class="tag">Für Marken & Agenturen</div>
+          <h3>Scale</h3>
+          <div class="pricing-price">
+            ab 129 € <span>/ Monat (netto)</span>
+          </div>
+          <ul>
+            <li>Für größere Shops, D2C-Brands & Agenturen</li>
+            <li>Hohe Volumen mit individuellen Limits</li>
+            <li>Unbegrenzte API-Keys innerhalb einer Organisation</li>
+            <li>Individuelles Onboarding & Prompt-Finetuning</li>
+            <li>White-Label-Option nach Absprache</li>
+          </ul>
+          <button class="pricing-btn" onclick="location.href='mailto:info@sellmate.info?subject=SellMate%20Scale%20Anfrage'">
+            Gespräch vereinbaren
+          </button>
         </div>
       </div>
 
       <div style="margin-top:16px;">
-        <a class="btn-primary" href="mailto:DEINE-MAIL-ADRESSE?subject=SellMate%20Testzugang">
+        <a class="btn-primary" href="mailto:info@sellmate.info?subject=SellMate%20Testzugang">
           Jetzt unverbindlich Testzugang anfragen
         </a>
       </div>
@@ -540,7 +607,7 @@
 
   <footer>
     © 2025 SellMate. All Rights Reserved.
-    · Kontakt: <a href="mailto:DEINE-MAIL-ADRESSE">DEINE-MAIL-ADRESSE</a>
+    · Kontakt: <a href="mailto:info@sellmate.info">info@sellmate.info</a>
   </footer>
 </body>
 </html>
