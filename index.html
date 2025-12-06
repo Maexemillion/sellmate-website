@@ -8,7 +8,7 @@
     :root {
       --primary: #4f46e5;
       --primary-dark: #3730a3;
-      --bg: #f5f5fb;
+      --bg: #f3f4f6;
       --text: #111827;
       --muted: #6b7280;
       --card-bg: #ffffff;
@@ -24,8 +24,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      /* leichtes, aber kontrastreiches SaaS-Gradient */
-      background: radial-gradient(circle at top, #1d1b4b 0, #0b1120 26%, #f9fafb 60%);
+      background: var(--bg);
       color: var(--text);
     }
 
@@ -39,9 +38,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(14px);
-      background: rgba(248, 250, 252, 0.88);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+      backdrop-filter: blur(10px);
+      background: rgba(249, 250, 251, 0.9);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
     }
 
     .nav-inner {
@@ -62,16 +61,15 @@
       letter-spacing: 0.02em;
     }
 
-    .logo-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 16px;
+    .logo img {
+      height: 32px;
+      display: block;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .logo img {
+        content: url("assets/sellmate_logo_dark.svg");
+      }
     }
 
     .nav-links {
@@ -87,7 +85,7 @@
     }
 
     .nav-links a:hover {
-      background: rgba(129, 140, 248, 0.16);
+      background: rgba(129, 140, 248, 0.12);
       color: var(--primary-dark);
     }
 
@@ -98,7 +96,6 @@
       color: white;
       font-size: 13px;
       font-weight: 500;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
     }
 
     .nav-cta:hover {
@@ -107,10 +104,10 @@
 
     /* HERO */
     .hero {
-      padding: 40px 16px 32px;
+      padding: 32px 16px 28px;
       text-align: center;
-      background: linear-gradient(180deg, #111827 0%, #312e81 42%, transparent 42%);
-      color: white;
+      background: linear-gradient(180deg, #eef2ff 0%, #ffffff 60%, transparent 100%);
+      border-bottom: 1px solid rgba(209, 213, 219, 0.7);
     }
 
     .hero-inner {
@@ -124,28 +121,28 @@
       gap: 6px;
       padding: 4px 10px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.55);
+      background: rgba(129, 140, 248, 0.12);
       font-size: 11px;
-      margin-bottom: 16px;
+      color: #4f46e5;
+      margin-bottom: 14px;
     }
 
     .hero h1 {
-      margin: 0 0 10px;
-      font-size: clamp(28px, 4vw, 40px);
-      text-shadow: 0 2px 8px rgba(15, 23, 42, 0.6);
+      margin: 0 0 8px;
+      font-size: clamp(26px, 3.6vw, 36px);
+      color: #111827;
     }
 
     .hero p {
       margin: 0;
       font-size: 15px;
-      max-width: 620px;
+      max-width: 640px;
       margin-inline: auto;
-      color: #e5e7eb;
-      text-shadow: 0 1px 6px rgba(15, 23, 42, 0.7);
+      color: var(--muted);
     }
 
     .hero-cta-row {
-      margin-top: 22px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -155,13 +152,13 @@
     .btn-primary {
       padding: 10px 18px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #6366f1, #a855f7);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: #f9fafb;
       font-size: 14px;
       font-weight: 600;
       border: none;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+      box-shadow: 0 10px 20px rgba(148, 163, 184, 0.5);
       display: inline-block;
       transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.08s ease;
     }
@@ -169,30 +166,31 @@
     .btn-primary:hover {
       filter: brightness(1.05);
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.45);
+      box-shadow: 0 14px 24px rgba(148, 163, 184, 0.7);
     }
 
     .btn-ghost {
       padding: 10px 16px;
       border-radius: 999px;
       border: 1px solid rgba(209, 213, 219, 0.9);
-      background: transparent;
-      color: #e5e7eb;
+      background: #ffffff;
+      color: var(--muted);
       font-size: 14px;
       cursor: pointer;
-      transition: background 0.08s ease, border-color 0.08s ease;
+      transition: background 0.08s ease, border-color 0.08s ease, color 0.08s ease;
     }
 
     .btn-ghost:hover {
-      background: rgba(15, 23, 42, 0.45);
-      border-color: rgba(243, 244, 246, 0.95);
+      background: #f3f4ff;
+      border-color: #a5b4fc;
+      color: #374151;
     }
 
     /* MAIN CONTENT */
     main {
       max-width: 1040px;
-      margin: -24px auto 40px;
-      padding: 0 16px 40px;
+      margin: 0 auto 40px;
+      padding: 24px 16px 40px;
     }
 
     .grid {
@@ -207,8 +205,8 @@
       background: var(--card-bg);
       border-radius: var(--radius-lg);
       padding: 20px 20px 18px;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
-      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(209, 213, 219, 0.9);
     }
 
     h2 {
@@ -288,7 +286,7 @@
 
     .pricing-card {
       border-radius: var(--radius-lg);
-      border: 1px solid rgba(148, 163, 184, 0.4);
+      border: 1px solid rgba(209, 213, 219, 0.9);
       background: rgba(255, 255, 255, 0.98);
       padding: 16px 18px 14px;
       position: relative;
@@ -296,7 +294,7 @@
 
     .pricing-card-hot {
       border-color: #f97316;
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.3);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
     }
 
     .pricing-price {
@@ -344,12 +342,12 @@
       padding: 8px 12px;
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #6366f1, #a855f7);
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
       color: #ffffff;
       font-size: 14px;
       font-weight: 500;
       cursor: pointer;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
+      box-shadow: 0 10px 20px rgba(148, 163, 184, 0.5);
     }
 
     .pricing-btn:hover {
@@ -358,7 +356,7 @@
 
     /* FOOTER */
     footer {
-      border-top: 1px solid rgba(209, 213, 219, 0.7);
+      border-top: 1px solid rgba(209, 213, 219, 0.9);
       padding: 16px;
       text-align: center;
       font-size: 12px;
@@ -381,20 +379,9 @@
         display: none;
       }
       main {
-        margin-top: -18px;
+        padding-top: 18px;
       }
     }
-	
-	.logo img {
-	  height: 32px;
-      display: block;
-	}
-
-	@media (prefers-color-scheme: dark) {
-	  .logo img {
-		content: url("assets/sellmate_logo_dark.svg");
-	  }
-	}
   </style>
 </head>
 <body>
@@ -403,8 +390,8 @@
   <nav class="nav">
     <div class="nav-inner">
       <div class="logo">
-		<img src="assets/sellmate_logo_light.svg" alt="SellMate" class="logo-img" />
-	  </div>
+        <img src="assets/sellmate_logo_light.svg" alt="SellMate" />
+      </div>
 
       <div class="nav-links">
         <a href="#what">Produkt</a>
@@ -421,7 +408,7 @@
   <header class="hero">
     <div class="hero-inner">
       <div class="hero-pill">
-        <span>✨ KI-Verkaufsberater für deine Produktseiten</span>
+        ✨ KI-Verkaufsberater für deine Produktseiten
       </div>
       <h1>SellMate – Der KI-Verkaufsberater für Online-Shops</h1>
       <p>
@@ -430,11 +417,13 @@
         bei dir und nicht im Nichts landen.
       </p>
       <div class="hero-cta-row">
-		<a class="btn-primary" href="#contact">Automatisierung starten</a>
-		<button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'});">
-          Ergebnisse ansehen
+        <a class="btn-primary" href="mailto:info@sellmate.info?subject=SellMate%20Testzugang">
+          Testzugang anfragen
+        </a>
+        <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'});">
+          Wie funktioniert das?
         </button>
-	  </div>
+      </div>
     </div>
   </header>
 
@@ -627,35 +616,35 @@
         </a>
       </div>
     </section>
+
+    <!-- FOUNDER BLOCK -->
+    <section class="card" style="margin-top: 24px; text-align: center;">
+      <div class="section-label">Über den Gründer</div>
+      <h2>Warum gibt es SellMate?</h2>
+
+      <p style="max-width: 620px; margin: 0 auto; font-size: 14px; color: #6b7280;">
+        Hey, ich bin Felix 👋  
+        SellMate ist kein großes Agenturprojekt – es ist mein erstes, bewusst ergebnisorientiertes Tool für E-Commerce.  
+        Statt noch einen „netten Chatbot“ zu bauen, wollte ich etwas schaffen, das <strong>wirklich Umsatz bewegt</strong>:
+        ein Assistent, der <strong>konkret beim Kauf hilft</strong> und genau dann einspringt, wenn Kunden sonst abspringen.
+      </p>
+
+      <p style="margin-top: 10px; font-size: 14px; color: #6b7280;">
+        Mein Anspruch ist simpel: <strong>wenn du SellMate nutzt, soll sich das in deinem Gewinn bemerkbar machen.</strong>  
+        Keine leeren Versprechen, keine Marketing-Floskeln – sondern ein Assistent, der Kunden <strong>Sicherheit gibt, Vertrauen weckt</strong>
+        und damit <strong>mehr Käufe abschließt.</strong>
+      </p>
+
+      <p style="margin-top: 10px; font-size: 13px; color: #6b7280;">
+        Wenn du Lust hast, herauszufinden, was SellMate für deinen Shop bewirken kann,
+        schreib mir einfach direkt. Ich kümmere mich persönlich darum, dass du Ergebnisse siehst.
+      </p>
+
+      <a class="btn-primary" href="mailto:info@sellmate.info?subject=Frage%20zu%20SellMate">
+        Mit mir sprechen
+      </a>
+    </section>
   </main>
-  
- <!-- FOUNDER BLOCK -->
-<section class="card" id="contact" style="margin: 0 16px 24px; max-width: 1040px; margin-inline:auto; text-align: center;">
-  <div class="section-label">Über den Gründer</div>
-  <h2>Warum gibt es SellMate?</h2>
-
-  <p style="max-width: 620px; margin: 0 auto; font-size: 14px; color: #6b7280;">
-    Hey, ich bin Felix 👋  
-    SellMate ist kein großes Agenturprojekt – es ist mein erstes, bewusst ergebnisorientiertes Tool für E-Commerce.  
-    Statt noch einen „netten Chatbot“ zu bauen, wollte ich etwas schaffen, das <strong>wirklich Umsatz bewegt</strong>:
-    ein Assistent, der <strong>konkret beim Kauf hilft</strong> und genau dann einspringt, wenn Kunden sonst abspringen.
-  </p>
-
-  <p style="margin-top: 10px; font-size: 14px; color: #6b7280;">
-    Mein Anspruch ist simpel: <strong>wenn du SellMate nutzt, soll sich das in deinem Gewinn bemerkbar machen.</strong>  
-    Keine leeren Versprechen, keine Marketing-Floskeln – sondern ein Assistent, der Kunden <strong>Sicherheit gibt, Vertrauen weckt</strong>
-    und damit <strong>mehr Käufe abschließt.</strong>
-  </p>
-
-  <p style="margin-top: 10px; font-size: 13px; color: #6b7280;">
-    Wenn du Lust hast, herauszufinden, was SellMate für deinen Shop bewirken kann,
-    schreib mir einfach direkt. Ich kümmere mich persönlich darum, dass du Ergebnisse siehst.
-  </p>
-
-  <a class="btn-primary" href="mailto:info@sellmate.info?subject=Frage%20zu%20SellMate">
-    Mit mir sprechen
-  </a>
-</section>
 
   <footer>
     © 2025 SellMate. All Rights Reserved.
